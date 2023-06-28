@@ -1,5 +1,9 @@
 package com.oxcentra.menumasteradminapp.controller;
 
+import com.oxcentra.menumasteradminapp.common.JwtUtility;
+import com.oxcentra.menumasteradminapp.dto.JwtRequest;
+import com.oxcentra.menumasteradminapp.dto.JwtResponse;
+import com.oxcentra.menumasteradminapp.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.List;
 
 @Slf4j
 @Component
@@ -34,7 +37,7 @@ public class AdminController {
         this.authenticationManager = authenticationManager;
     }
 
-    @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"})
+    @CrossOrigin(origins = { "http://localhost:3000"})
     @PostMapping("/login")
     @ResponseBody
     public JwtResponse login(@RequestBody JwtRequest jwtRequest) throws Exception {
